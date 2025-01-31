@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Watchlist</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Movie Watchlist</h1>
+      <button id="addBtn">Add Movie</button>
+      <button id="editBtn">Edit Movies</button>
+      <button id="logOut">Log Out</button>
+    </header>
+
+    <div id="loginPopup">
+      <h2>Movie Watchlist Login</h2>
+      <div id="Lwarning">Authentication failed</div>
+      <div id="user">
+        <label for="username">Email:</label>
+        <input type="text" id="username" />
+      </div>
+
+      <div id="pass">
+        <label for="password">Password:</label>
+        <input type="password" id="password" />
+      </div>
+
+      <button id="login">login</button>
+      <button id="addUser">Register</button>
+    </div>
+
+    <div id="registerPopup" style="display: none">
+      <input type="text" id="register_first_name" placeholder="First Name" />
+      <input type="text" id="register_last_name" placeholder="Last Name" />
+      <input type="email" id="register_email" placeholder="Email" />
+      <input type="password" id="register_password" placeholder="Password" />
+      <div id="Rwarning">Email already in use</div>
+      <button id="registerButton">Register</button>
+      <button id="backToLoginBtn">Back</button>
+    </div>
+
+    <div class="full-page-overlay" id="fullPageOverlay"></div>
+
+    <div class="container">
+      <div id="movieAdder">
+        <h2>Add a new movie</h2>
+
+        <label for="title">Title</label>
+        <input type="text" id="title_input" />
+
+        <label for="director">Director</label>
+        <input type="text" id="director_input" />
+
+        <label for="date">Date</label>
+        <input type="text" id="date_input" />
+
+        <label for="genre">Genre</label>
+        <input type="genre" id="genre_input" />
+
+        <label for="rating">Rating</label>
+        <input type="rating" id="rating_input" />
+
+        <button type="submit" id="submitBtn">Submit</button>
+        <button type="button" id="cancel" onclick="closeAdder()">Close</button>
+      </div>
+
+      <div id="editMoviePopup">
+        <h2>Edit Movie</h2>
+
+        <label for="edit_title">Title</label>
+        <input type="text" id="edit_title_input" />
+
+        <label for="edit_director">Director</label>
+        <input type="text" id="edit_director_input" />
+
+        <label for="edit_date">Date</label>
+        <input type="text" id="edit_date_input" />
+
+        <label for="edit_genre">Genre</label>
+        <input type="text" id="edit_genre_input" />
+
+        <label for="edit_rating">Rating</label>
+        <input type="text" id="edit_rating_input" />
+
+        <button type="submit" id="editSubmitBtn">Update</button>
+        <button type="button" id="editCancelBtn" onclick="closeEditPopup()">
+          Cancel
+        </button>
+      </div>
+
+      <div class="overlay" id="overlay"></div>
+
+      <ul id="movielist"></ul>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

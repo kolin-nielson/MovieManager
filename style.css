@@ -1,0 +1,283 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #222;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex; /* Set as flex container */
+  flex-wrap: wrap; /* Allow items to wrap to next line */
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+header {
+  background-color: #333;
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-bottom: 1em;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+#movielist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+#movielist li {
+  flex: 0 1 calc(15% - 20px);
+  margin: 10px 1%;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  position: relative;
+  height: 320px;
+}
+
+#movielist li:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+#movielist div {
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  position: relative;
+  line-height: 1.3;
+}
+
+.movie-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.2;
+  max-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#movielist li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.edit-button,
+.delete-button {
+  position: absolute;
+  top: 5px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff5733;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  display: none;
+  z-index: 3;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #ff6f4d;
+  transform: scale(1.05);
+}
+
+.edit-button {
+  left: 10px;
+}
+
+.delete-button {
+  right: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: block;
+}
+
+#movieAdder,
+#editMoviePopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+}
+
+#loginPopup,
+#registerPopup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#loginPopup h2,
+#registerPopup h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  text-align: center;
+}
+
+#loginPopup #user,
+#loginPopup #pass,
+#registerPopup input[type="text"],
+#registerPopup input[type="email"],
+#registerPopup input[type="password"] {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#loginPopup #user label,
+#loginPopup #pass label,
+#registerPopup label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+#loginPopup input,
+#registerPopup input {
+  width: 95%;
+  padding: 10px;
+  margin-right: 2em;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+#loginPopup button,
+#registerPopup button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+#loginPopup button:hover,
+#registerPopup button:hover {
+  background-color: #666;
+}
+
+#registerPopup #backToLoginBtn {
+  position: absolute;
+  right: 5em;
+}
+
+.full-page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0);
+  z-index: 999;
+  display: none;
+}
+
+#movieAdder input,
+#editMoviePopup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+.edit-button,
+.delete-button {
+  display: none;
+}
+
+#logOut {
+  position: absolute;
+  right: 2em;
+}
+
+#Rwarning,
+#Lwarning {
+  color: red;
+  text-align: center;
+  font-size: 1.2em;
+  display: none;
+}
